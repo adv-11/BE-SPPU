@@ -1,0 +1,22 @@
++---------------------------+         +-------------------------+
+| Python Script (CPU/Pandas)|         | SQLite Database Engine  |
++---------------------------+         +-------------------------+
+           |                                   |
+           |-- 1. Analyze Query -->            |
+           |  (`SELECT *.. LIMIT 10`)          |
+           |  (Result: Cannot Accelerate)      |
+           |                                   |
+           |-- 2. Send SQL Query ----------->  |
+           |  (`SELECT *.. LIMIT 10`)          |
+           |                                   |
+           |                         <--- 3. Parse Query --------+
+           |                                   |                   |
+           |                         <--- 4. Fetch 10 Rows ----+
+           |                                   |                   |
+           |                         <--- 5. Return 10 Rows ---+
+           |                                   |
+<----------+-- 6. Receive Data --------------+ |
+           |   (Load into Pandas DF)           |
+           |                                   |
+
+*** NO GPU / CUDA KERNEL INVOLVEMENT ***

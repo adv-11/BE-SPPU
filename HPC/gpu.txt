@@ -1,0 +1,43 @@
++---------------------------+      +-----------------+      +-------------------------+
+| Python Script (CPU/Pandas)|      | GPU (CUDA Kernel)|      | SQLite Database Engine  |
++---------------------------+      +-----------------+      +-------------------------+
+           |                              |                         |
+           |-- 1. Analyze Query           |                         |
+           |   (Identifies SUM(amount))   |                         |
+           |                              |                         |
+           |-- 2. Request *Raw Data* ---> |                         |
+           |   (e.g., SELECT amount FROM..)|                        |
+           |                              |                         |
+           |                              |   <--- 3. Parse Query --+
+           |                              |                         |
+           |                              |   <--- 4. Scan Table ---+
+           |                              |   (Return ALL 'amount'  |
+           |                              |    values)              |
+           |                              |                         |
+           |                              |   <--- 5. Return Data --+
+           |                              |                         |
+<----------+-- 6. Receive Raw Data -------+                         |
+           |   (Store in Pandas DF)       |                         |
+           |                              |                         |
+           |-- 7. Transfer Data (CPU->GPU)--> |                     |
+           |   (Copy 'amount' array)      |                         |
+           |                              |                         |
+           |                              |-- 8. Launch Kernel ---->|
+           |                              |   (aggregate_values)    |
+           |                              |                         |
+           |                              |   <-- 9. Parallel ----->|
+           |                              |   (Calculate block SUMs)|
+           |                              |                         |
+           |                              |-- 10. Kernel Done ----->|
+           |                              |   (Partial sums ready)  |
+           |                              |                         |
+           |<-- 11. Transfer Results -----|                         |
+           |    (GPU -> CPU)              |                         |
+           |    (Copy block sums)         |                         |
+           |                              |                         |
+           |-- 12. Final Aggregation -----+                         |
+           |    (CPU sums the block sums) |                         |
+           |                              |                         |
+           |-- 13. Construct Result -----+                          |
+           |    (Create final DataFrame)  |                         |
+           |                              |                         |
