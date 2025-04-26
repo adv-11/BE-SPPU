@@ -200,6 +200,8 @@ int main() {
     }
 
     // Display the results
+
+    print ('Advait Shinde BE A 41058')
     printf("\n------------------------------------------------------------\n");
     printf("| Graph No | Vertices | Sequential Time | Parallel Time | Speedup |\n");
     printf("------------------------------------------------------------\n");

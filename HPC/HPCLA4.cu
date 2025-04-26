@@ -59,7 +59,7 @@ int main() {
     std::vector<int> vectorSizes = {100000,350000, 500000,800000};
     std::vector<int> matrixSizes = {128, 256,450,780};
 
-    std::cout << "\n\nName: Gayatri Kurulkar  Roll No: 41039  Class: BE A\n\n";
+    std::cout << "\n\nADvait Shinde BE A 41058\n\n";
 
     // ------------------------ VECTOR ADDITION TABLE ------------------------
     std::cout << "====================================================================================================================\n";

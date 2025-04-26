@@ -138,7 +138,7 @@ int main() {
         arr2[i] = arr1[i];
         arr3[i] = arr1[i];
     }
-    printf("Prathmesh Kulkarni 41036 BE A");
+    printf("Advait Shinde 41058 BE A");
     printf("\n+----------------------+------------------------+------------------------+------------------+------------------+\n");
     printf("| Iteration | Odd-Even Bubble Sort Seq Time | Odd-Even Bubble Sort Par Time | Merge Sort Seq Time | Merge Sort Par Time | Speedup | Efficiency |\n");
     printf("+----------------------+------------------------+------------------------+------------------+------------------+\n");

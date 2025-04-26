@@ -151,7 +151,7 @@ int main() {
     }
 
     // Display the results
-    printf("Dhruv Sawant - 41055 BE-A");
+    printf("Advait Shinde - 41058 BE-A");
     printf("\n------------------------------------------------------------\n");
     printf("| Graph No | Vertices | Sequential Time | Parallel Time | Speedup |\n");
     printf("------------------------------------------------------------\n");
