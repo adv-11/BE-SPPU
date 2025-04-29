@@ -1,3 +1,6 @@
+gcc -f openmp filename.c -o filename
+./ filename
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
